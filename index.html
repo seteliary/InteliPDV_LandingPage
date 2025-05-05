@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Bora Jogar? é a solução ideal para sortear times de futebol entre amigos de forma rápida, justa e divertida. Cadastre seus jogadores, avalie suas habilidades, defina os goleiros e deixe nosso algoritmo inteligente criar times equilibrados em segundos. Visualize a formação tática no campo e compartilhe a emoção do sorteio com a galera!" />
+  <title>InteliPDV - Modernize seu Evento!</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y771BBVEG0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-Y771BBVEG0");
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none;
+      font-family: "Lato", sans-serif;
+    }
+
+    h1 {
+      font-size: 80px;
+      letter-spacing: 4px;
+      /* text-shadow: -1px -1px 11px rgba(0, 0, 0, 0.396); */
+    }
+
+    h1,
+    h2 {
+      color: #fff;
+    }
+
+    body {
+      background-color: orange;
+    }
+
+    /* Containers */
+
+    .container {
+      max-width: 1280px;
+      width: 100%;
+    }
+
+    .centralize {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Menu */
+
+    header {
+      padding-top: 32px;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      background-color: #fff;
+      border-radius: 999px;
+    }
+
+    #logo {
+      width: 200px;
+    }
+
+    .navegacao ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 32px;
+    }
+
+    .navegacao ul li a {
+      color: #fff;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 8px;
+      color: #40820d;
+    }
+
+    .navegacao .botao-baixar {
+      background-color: #40820d;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: rgba(149, 165, 155, 0.486) 0px 8px 32px;
+      transition: 0.4s ease-in-out;
+    }
+
+    .navegacao .botao-baixar:hover {
+      background-color: #33680a;
+      box-shadow: rgba(26, 62, 32, 0.386) 0px 8px 24px;
+    }
+
+    /* Menu hambúrguer */
+
+    .hamburguer {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+      z-index: 999;
+      position: absolute;
+      /* Posição normal quando o menu está fechado */
+      top: 36px;
+      /* Ajuste conforme necessário */
+      right: 32px;
+      /* Ajuste conforme necessário */
+    }
+
+    .hamburguer span {
+      display: block;
+      height: 3px;
+      background-color: #007f0e;
+      border-radius: 2px;
+      transition: 0.3s ease-in-out;
+    }
+
+    /* Menu hambúrguer em resoluções menores */
+    @media (max-width: 768px) {
+      .plataforma {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 24px;
+      }
+
+      .navegacao {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        width: 65%;
+        background-color: #007f0e;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease;
+        z-index: 999;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+      .navegacao ul {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .navegacao.active {
+        right: 0;
+      }
+
+      .menu {
+        justify-content: space-between;
+      }
+
+      .hamburguer {
+        display: flex;
+      }
+
+      .hamburguer.open {
+        position: fixed;
+        /* Fixa o X no topo da página quando o menu está aberto */
+        top: 36px;
+        right: 32px;
+      }
+
+      .hamburguer.open span {
+        background-color: #fff;
+      }
+
+      /* Animação do ícone de hambúrguer */
+      .hamburguer.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburguer.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburguer.open span:nth-child(3) {
+        transform: translateY(-12px) rotate(-45deg);
+      }
+
+      .navegacao ul {
+        margin-top: 130px;
+      }
+
+      .navegacao ul li a {
+        font-size: 18px;
+        padding: 8px 0;
+        color: #fff;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .navegacao ul li a.botao-baixar {
+        margin-top: 32px;
+        color: #007f0e;
+        background-color: #fff;
+      }
+    }
+
+    /* Hero */
+
+    .background {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url(images/bg.jpg) no-repeat;
+      /* Foto de Shapelined na Unsplash - https://unsplash.com/pt-br/@shapelined?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero .container {
+      padding: 80px 0;
+    }
+
+    .hero .container {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .hero .cat p {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 16px;
+      line-height: 1.5;
+      letter-spacing: 0.7px;
+    }
+
+    .hero .container img {
+      width: 400px;
+    }
+
+    .app-stores {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .app-stores img {
+      width: 200px;
+    }
+
+    /* O que é? */
+
+    #o-que-e {
+      background-color: rgb(100, 204, 20);
+      background: linear-gradient(rgba(100, 204, 20, 0.8), rgba(100, 204, 20, 0.8)), url(https://images.unsplash.com/photo-1454117096348-e4abbeba002c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat;
+      padding: 40px 0;
+    }
+
+    #o-que-e h2,
+    #como-funciona h2 {
+      font-size: 32px;
+    }
+
+    #o-que-e .o-que-e-texto {
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+
+    }
+
+    #o-que-e .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    #o-que-e .container>div {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 40px;
+    }
+
+    #o-que-e .container>p {
+      font-weight: bold;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .o-que-e-cards {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .o-que-e-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 80px;
+      background-color: #fff;
+      padding: 24px;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .o-que-e-card>div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .o-que-e-card>div img {
+      width: 56px;
+    }
+
+    .o-que-e-card p {
+      color: #333;
+      text-align: center;
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+    .titulo-destaque {
+      display: inline-block;
+      padding: 4px 8px;
+      background-color: #e67e22;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    /* Como funciona? */
+
+    #como-funciona {
+      background: url(images/waves.jpg) no-repeat;
+      background-size: cover;
+      background-position: bottom;
+      padding: 40px 0;
+    }
+
+    #como-funciona h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .como-funciona-cards {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 40px;
+    }
+
+    .como-funciona-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background-color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .como-funciona-card img {
+      width: 48%;
+      height: 740px;
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .como-funciona-card>div {
+      padding: 24px;
+    }
+
+    .como-funciona-card h3 {
+      font-size: 24px;
+      margin-bottom: 24px;
+      padding: 4px 8px;
+      color: #fff;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .como-funciona-card .publico {
+      background-color: #e67e22;
+    }
+
+    .como-funciona-card .organizador {
+      background-color: #40820d;
+    }
+
+    .como-funciona-card .titulo-lista {
+      font-weight: bold;
+    }
+
+    .como-funciona-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .como-funciona-card ul li {
+      padding-left: 8px;
+      border-left: 4px solid #40820d;
+    }
+
+    .como-funciona-card ul li.orange {
+      border-left: 4px solid #e67e22;
+    }
+
+    /* CAT Final */
+
+    .cat-final {
+      text-align: center;
+      padding: 40px 0
+    }
+
+    .cat-final h2 {
+      font-size: 32px;
+      /* color: #333; */
+    }
+
+    .cat-final p {
+      font-size: 24px;
+      color: #fff;
+      margin: 16px 0;
+    }
+
+    .cat-final .btn-saiba-mais {
+      display: inline-block;
+      color: #fff;
+      background-color: #40820d;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 20px;
+      margin-top: 16px;
+      /* box-shadow: rgba(149, 165, 155, 0.486) 0px 8px 32px; */
+      transition: 0.4s ease-in-out;
+    }
+
+    .cat-final .btn-saiba-mais:hover {
+      background-color: #33680a;
+      box-shadow: rgba(26, 62, 32, 0.386) 0px 8px 24px;
+    }
+
+    /* Footer */
+
+    footer {
+      background-color: #fff;
+      font-size: 14px;
+      color: #e67e22;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .whatsapp-logo {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background-color: #31ba45;
+      padding: 12px 12px 8px 12px;
+      border-radius: 50%;
+      animation: shake-animation 9s infinite;
+    }
+
+    .whatsapp-logo img {
+      width: 35px;
+    }
+
+    @keyframes shake-animation {
+
+      0%,
+      22.22% {
+        transform: translateY(0);
+        /* Ponto inicial e final da animação */
+      }
+
+      5%,
+      15% {
+        transform: translateY(-6px);
+        /* Movimenta rapidamente para a esquerda */
+      }
+
+      10%,
+      20% {
+        transform: translateY(6px);
+        /* Movimenta rapidamente para a direita */
+      }
+    }
+
+    /* Media Queries */
+
+    @media (max-width: 768px) {
+      .container {
+        width: 80%;
+      }
+
+      h1,
+      h2 {
+        font-size: 40px;
+      }
+
+      #logo {
+        width: 150px;
+      }
+
+      .hamburguer,
+      .hamburguer.open {
+        top: 58px;
+        right: 54px;
+      }
+
+      #o-que-e .container>div,
+      .como-funciona-cards,
+      .como-funciona-card,
+      .hero .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero .container img {
+        width: 250px;
+      }
+
+      .como-funciona-card img {
+        width: 100%;
+        height: 250px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 8px;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <header class="centralize">
+      <div class="menu container">
+        <img src="images/logo_extended.png" alt="Logo PartiuFut" id="logo" />
+        <nav class="navegacao">
+          <ul>
+            <li><a href="#o-que-e">O que é?</a></li>
+            <li><a href="#como-funciona">Como funciona?</a></li>
+            <li><a href="#cat" class="botao-baixar">Baixar</a></li>
+          </ul>
+        </nav>
+        <div class="hamburguer" id="hamburguer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+    <section class="hero centralize">
+      <div class="container">
+        <div class="cat">
+          <h1>Modernize seus eventos com o InteliPDV</h1>
+          <p>O sistema de gestão completo que substitui as fichas de papel e eleva a experiência do seu público em
+            eventos de pequeno e grande porte, como quermesses e parques de diversão.</p>
+        </div>
+        <img src="images/payment.png" alt="Imagem">
+        <!-- Foto de Dane Deaner na Unsplash: https://unsplash.com/pt-br/@danedeaner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash -->
+      </div>
+    </section>
+  </div>
+  <main>
+    <section class="centralize" id="o-que-e">
+      <div class="container">
+        <h2>Você organiza <span class="titulo-destaque">eventos incríveis</span>, mas a gestão das fichas de
+          papel...
+        </h2>
+        <div class="o-que-e-cards">
+          <div class="o-que-e-card">
+            <div>
+              <p>Gera filas enormes que frustram os visitantes?</p><img src="images/angry.png" alt="Ícone">
+            </div>
+          </div>
+          <div class="o-que-e-card">
+            <div>
+              <p>Consome um tempo valioso da sua equipe na operação do evento?</p><img src="images/time.png"
+                alt="Ícone">
+            </div>
+          </div>
+          <div class="o-que-e-card">
+            <div>
+              <p>No final, você nunca sabe exatamente quanto sobrou ou foi realmente
+                consumido?</p><img src="images/doubt.png" alt="Ícone">
+            </div>
+          </div>
+        </div>
+        <p class="texto-destaque">O controle manual é suscetível a erros e a contabilidade no final do evento pode ser
+          um pesadelo.</p>
+      </div>
+    </section>
+    <section class="centralize" id="como-funciona">
+      <div class="container">
+        <h2>Como funciona?</h2>
+        <div class="como-funciona-cards">
+          <div class="como-funciona-card">
+            <img src="images/public.jpg" alt="Imagem">
+            <div>
+              <h3 class="publico">Para o público</h3>
+              <ul>
+                <li class="orange"><span class="titulo-lista">Créditos Digitais:</span> O participante adquire créditos
+                  no aplicativo
+                  ou em pontos de venda identificados.</li>
+                <li class="orange"><span class="titulo-lista">Pagamento Rápido por Aproximação (NFC):</span> Para
+                  comprar, basta
+                  aproximar o celular (ou um cartão/pulseira compatível, se você optar por essa modalidade) do ponto de
+                  venda. Transação instantânea e segura!</li>
+                <li class="orange"><span class="titulo-lista">Controle Total na Palma da Mão:</span> O saldo e o
+                  histórico de consumo
+                  ficam visíveis no app do participante.</li>
+                <li class="orange"><span class="titulo-lista">Chega de Perder Dinheiro:</span> Ao final do evento, se
+                  houver saldo
+                  remanescente, o IntelliPDV simplifica o processo de reembolso, garantindo que o público se sinta
+                  valorizado (e você ainda tem o controle total do que não foi resgatado!).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="como-funciona-card">
+            <img src="images/business.jpg" alt="Imagem">
+            <div>
+              <h3 class="organizador">Para o organizador</h3>
+              <ul>
+                <li><span class="titulo-lista">Controle em Tempo Real:</span> Acompanhe vendas, consumo por ponto e
+                  saldo geral do evento direto no
+                  sistema.
+                </li>
+                <li><span class="titulo-lista">Lucro com Créditos Não Usados:</span> O valor de créditos não resgatados
+                  é mostrado com precisão, virando
+                  receita auditável.</li>
+                <li><span class="titulo-lista">Filas Menores:</span> O pagamento por aproximação acelera o atendimento e
+                  melhora a experiência.</li>
+                <li><span class="titulo-lista">Mais Segurança:</span> Transações digitais evitam perdas com fichas ou
+                  erros.</li>
+                <li><span class="titulo-lista">Menos Trabalho:</span> Reduza o esforço da equipe com processos
+                  automatizados.</li>
+                <li><span class="titulo-lista">Dados Estratégicos:</span> Relatórios completos ajudam na análise e no
+                  planejamento.</li>
+                <li><span class="titulo-lista">Evento Sustentável:</span> Sem papel, mais eficiência e menos impacto
+                  ambiental.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cat-final centralize">
+      <div class="container">
+        <h2>Pronto para Modernizar seu Evento e Aumentar sua Receita?</h2>
+        <p>Fale Conosco e descubra como o IntelliPDV se adapta ao seu evento.</p>
+        <a href="" class="btn-saiba-mais">Quero saber mais!</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>© 2025 InteliPDV. Todos os direitos reservados.</span>
+    <a href="https://wa.me/+5511933461305/?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20InteliPDV." target="_blank"
+      class="whatsapp-logo"><img src="images/whatsapp.png" alt="Fale conosco!"></a>
+  </footer>
+  <script>
+    const hamburguer = document.getElementById("hamburguer");
+    const navegacao = document.querySelector(".navegacao");
+
+    hamburguer.addEventListener("click", () => {
+      navegacao.classList.toggle("active");
+      hamburguer.classList.toggle("open");
+    });
+  </script>
+</body>
+
+</html>
